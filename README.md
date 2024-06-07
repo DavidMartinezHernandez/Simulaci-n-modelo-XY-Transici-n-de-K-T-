@@ -4,7 +4,7 @@ Código utilizado para producir los resultados del trabajo sobre la transición 
 El código se compone esencialmente de 3 archivos.
 - **maincorr.cpp**: Es el archivo principal que simula el sistema.
     - **Compilado**:  Para compilar usar el comando: g++ -O3 -fopenmp -std=c++17 -o simulationcorr maincorr.cpp 
-    - **Ejecución**:  Para ejecutar usar: ./simulationcorr <L> <T_min> <T_max> <Pasos de Temperatura< <Repositorio> <Bins de termalización> <Bins de medida< <Modo>. Para medir la correlación usar <Modo>=1. Para medir solo configuraciones cualquier otro número.
+    - **Ejecución**:  Para ejecutar usar: ./simulationcorr <L> <T_min> <T_max> <Pasos de Temperatura> <Repositorio> <Bins de termalización> <Bins de medida> <Modo> . Para medir la correlación usar <Modo>=1. Para medir solo configuraciones cualquier otro número.
     - **Outputs**:    La ejecución de este código producirá una carpeta de nombre <Repositorio> en la que se guardarán los siguientes archivos:
         - La última configuración de cada temperatura en archivos separados *configatT=<temperatura>.data*,
         - La función de correlación medida en todos los pasos de medición para cada temperatura en *corratT=<temperatura>.data*,
