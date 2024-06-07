@@ -1,4 +1,4 @@
-# Simulacion-modelo-XY-Transicion-de-K-T-
+# Simulacion-modelo-XY-Transicion-de-K-T
 Código utilizado para producir los resultados del trabajo sobre la transición de Kosterlitz-Thouless en el modelo XY bidimensional
 
 El código se compone esencialmente de 3 archivos.
