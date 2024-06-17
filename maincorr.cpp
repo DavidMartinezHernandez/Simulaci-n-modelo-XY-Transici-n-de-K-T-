@@ -23,6 +23,7 @@ public:
     double wolffClusterUpdate(int niters);
     void saveConfiguration(const std::string &filename);
     double calculateEnergy() const;
+    void saveEnergy(const std::string &filename, double energy);
     std::vector <double> calculateCorr();
     void saveCorr(const std::string &filename, std::vector<double> &Corr);
     std::mt19937 gen;
@@ -62,7 +63,7 @@ double XYModel::wolffClusterUpdate(int niters) {
     std::uniform_real_distribution<> rand_prob(0.0, 1.0);
     double beta = 1.0 / temp;
     double avg_cluster_size = 0.0;
-    //niters = std::ceil(niters / 2) + 1;                      //Descomentar esta línea para mayor eficiencia
+    //niters = std::ceil(niters / 4) + 1;                      //Descomentar esta línea para mayor eficiencia
 
     for (int n = 0; n < niters; ++n) {
         std::vector<int> cluster(N, 0);
@@ -111,6 +112,14 @@ double XYModel::calculateEnergy() const {
     }
     return energy;
 }
+
+// Guardar energía en un archivo
+void XYModel::saveEnergy(const std::string &filename, double energy) {
+    std::ofstream file(filename, std::ios::app);
+    file << energy << "\n";
+    file.close();
+}
+
 
 
 // Calcular la función de correlación
@@ -261,6 +270,12 @@ if (step >= therm_steps) {
     	avg_cluster_size += replicas[i].model.wolffClusterUpdate(replicas[i].niters);
         replicas[i].energy = replicas[i].model.calculateEnergy(); 
     	if ( mod == 1){
+    		// Guardar la energía
+        	std::ostringstream energy_file;
+        	energy_file << output_dir << "/EnergyatT=" << std::setw(5) << std::setfill('0') << static_cast<int>(replicas[i].model.temp * 10000) << ".data";
+        	replicas[i].model.saveEnergy(energy_file.str(), replicas[i].energy);
+    	
+    		//Guardar la correlación
         	std::vector<double> Corr = replicas[i].model.calculateCorr();
         	std::ostringstream corr_file;
             	corr_file << output_dir << "/corratT=" << std::setw(5) << std::setfill('0') << static_cast<int>(replicas[i].model.temp * 10000) << ".data";
