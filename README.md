@@ -12,4 +12,5 @@ El código se compone esencialmente de 3 archivos.
         - La lista ordenada de temperaturas en *variables.data*
 - **Media correlación.ipynb**: Jupyter notebook en el que se calcula la correlación media de todos pasos de Monte Carlo y se guardan en archivos de nombre *mean_corratT=<temperatura>.data*
 - **Media energías.ipynb**: Otro notebook en el que se calcula la energía media por sitio de red de todos los pasos de Monte Carlo para todas las temperaturas y se guardan en archivos de nombre *mean_energy_<directorio>.data*
-- **Gráficos.ipynb**: Jupyter notebook para producir los plots mostrados en el trabajo
+- **Gráficos.ipynb**: Jupyter notebook para producir los plots mostrados en el cuerpo del trabajo
+- **Gráfico cristal líquido.ipynb**: Jupyter notebook para visualizar las configuraciones como patrones de transmisión de luz en un cristal líquido
